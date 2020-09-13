@@ -28,4 +28,4 @@ jobs:
       run: npm install -g surge
       
     - name: Run surge
-      run: surge ./out https://react-timer-mh.surge.sh --token ${{secrets.SURGE_TOKEN}}
+      run: surge ./out https://shopping-basket-redux-mh.surge.sh --token ${{secrets.SURGE_TOKEN}}
