@@ -28,4 +28,4 @@ jobs:
       run: npm install -g surge
       
     - name: Run surge
-      run: surge ./next https://shopping-basket-redux.surge.sh --token ${{secrets.SURGE_TOKEN}}
+      run: surge ./.next https://shopping-basket-redux.surge.sh --token ${{secrets.SURGE_TOKEN}}
