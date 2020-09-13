@@ -12,8 +12,10 @@ import {
   Typography
 } from "@material-ui/core"
 import DeleteIcon from "@material-ui/icons/Delete"
+import { ProductItem } from './../global.d';
+import { useSelector } from "react-redux"
+import {remove,store} from '../store'
 
-import { ProductItem } from "../global"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,7 +39,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Basket = () => {
   const classes = useStyles({})
-  const products = [] // TODO
+
+  const products = useSelector((state:ProductItem[]) => state)
 
   return (
     <>
@@ -77,7 +80,7 @@ const Basket = () => {
                     edge="end"
                     aria-label="delete"
                     onClick={() => {
-                      /* Remove from basket */
+                      store.dispatch(remove(product))
                     }}
                   >
                     <DeleteIcon />

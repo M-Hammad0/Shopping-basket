@@ -2,8 +2,10 @@ import React from "react"
 import { Theme, makeStyles, createStyles } from "@material-ui/core/styles"
 import ButtonBase from "@material-ui/core/ButtonBase"
 import Typography from "@material-ui/core/Typography"
+import { useSelector } from "react-redux"
+import { ProductItem } from './../global.d';
+import { add, store } from "../store"
 
-import { ProductItem } from "../global"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down("xs")]: {
         width: "100% !important", // Overrides inline-style
         height: 100
+
       },
       "&:hover, &$focusVisible": {
         zIndex: 1,
@@ -83,7 +86,8 @@ const useStyles = makeStyles((theme: Theme) =>
 const Product = () => {
   const classes = useStyles({})
 
-  const products = [] // TODO
+  // const products = [] 
+  const products = useSelector((state: ProductItem[]) => state )
 
   return (
     <div className={classes.root}>
@@ -95,7 +99,7 @@ const Product = () => {
           focusVisibleClassName={classes.focusVisible}
           disabled={product.added}
           onClick={() => {
-            /* Add to basket */
+            store.dispatch(add(product))
           }}
           style={{
             width: `${100 / products.length}%`
