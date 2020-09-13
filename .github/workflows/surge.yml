@@ -23,7 +23,10 @@ jobs:
     
     - name: Build page
       run: npm run build
-      
+
+    - name: start page
+      run: npm run start
+
     - name: Install Surge
       run: npm install -g surge
       
